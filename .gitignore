@@ -1,0 +1,3 @@
+process.env
+/public/uploads
+/node_modules
