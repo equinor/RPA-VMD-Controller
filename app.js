@@ -1,3 +1,4 @@
+require('dotenv').config({path:__dirname+'/process.env'});
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -11,16 +12,20 @@ var proxy = require('proxy-agent');
 var awsswf = require('aws-swf').AWS;
 var index = require('./routes/index');
 
-require('dotenv').config();
-
 var app = express();
 
-    
-aws.config.update({
-    httpOptions: { agent: proxy('http://www-authproxy.statoil.net:8080') }
-});
 
-awsswf.config = aws.config;
+
+console.log(__dirname);
+console.log(process.env.ENV);
+
+if (process.env.ENV == 'PRODUCTION') {
+	aws.config.update({
+	    httpOptions: { agent: proxy('http://www-authproxy.statoil.net:8080') }
+		});
+	
+	awsswf.config = aws.config;
+}
 
 var workflow = new swf.Workflow({
    "domain": "Blue Prism",
@@ -38,7 +43,7 @@ var workflow = new swf.Workflow({
 // setup multer
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, '/private/frskja/RPA/VMD/workflow_controller/public/uploads')
+        cb(null, process.env.UPLOAD_PATH)
     },
     filename: function (req, file, cb) {
         cb(null, 'csvfile.csv')
