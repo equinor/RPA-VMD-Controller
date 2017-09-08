@@ -9,15 +9,10 @@ var multer  = require('multer');
 var swf = require('aws-swf');
 var aws = require('aws-sdk');
 var proxy = require('proxy-agent');
-var awsswf = require('aws-swf').AWS;
+var awsswf = require('aws-swf').AWS; // Needs this to overload with configuration, in order to use proxy
 var index = require('./routes/index');
 
 var app = express();
-
-
-
-console.log(__dirname);
-console.log(process.env.ENV);
 
 if (process.env.ENV == 'PRODUCTION') {
 	aws.config.update({
