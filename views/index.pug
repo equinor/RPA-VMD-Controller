@@ -1,8 +1,7 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Upload SAP
   form(method='post', enctype='multipart/form-data')
     input(type='file', name='csvupload')
     input(type='submit', name='uploadcsv', value='Upload CSV')
