@@ -1,7 +1,41 @@
-extends layout
+extends ../node_modules/jade-bootstrap/_bootstrap.pug
 
-block content
-  h1 Upload SAP
-  form(method='post', enctype='multipart/form-data')
-    input(type='file', name='csvupload')
-    input(type='submit', name='uploadcsv', value='Upload CSV')
+append styles	
+	// Custom styles for this template
+	link(href='../node_modules/jade-bootstrap/css/jumbotron-narrow.css', rel='stylesheet')
+block body
+	-var menu = {'Start workflow' : '/', 'Workflow status' : '/listwf', 'System info' : '#'}
+	.container
+		.header.clearfix
+			nav
+				ul.nav.nav-pills.pull-right
+					each val, key in menu
+						if selected === key
+							li.active(role='presentation')
+								a(href=val)= key
+						else 
+							li(role='presentation')
+								a(href=val)= key
+
+			h3.text-muted RPA Workflow Engine
+		.jumbotron
+			h2 SAP VMD
+			p.lead
+				| Upload XLSX with OrgId, OrgName from SAP VMD. This will trigged a workflow that checks the OrgId aginst BBREG to find bankrupt companies. The result of the compare can be fetched via API call
+			p
+			if selected === 'Start workflow'
+				.row
+					.col-md-6.col-md-offset-3
+					
+					// register form
+					form(method='POST' enctype='multipart/form-data' action='/upload')
+						div.form-group
+							label(for='name') :
+							input#name.form-control(type='file', placeholder='File' name='csvupload')
+						button.btn.btn-primary(type='submit', name='uploadcsv', value='Upload CSV') Upload
+			else if selected === 'Workflow status'
+				.row
+					.col-md-6.col-md-offset-3
+						test
+		footer.footer
+			p © Statoil ASA
