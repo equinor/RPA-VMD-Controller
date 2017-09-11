@@ -15,7 +15,7 @@ exports.connect = function(callback) {
 	aws_swf = new aws.SWF;
 
 	if (process.env.ENV == 'PRODUCTION') {
-		aws.config.update({
+		aws_swf.config.update({
 		    httpOptions: { agent: proxy('http://www-authproxy.statoil.net:8080') }
 			});
 		

@@ -5,10 +5,16 @@
 	<projects>
 	</projects>
 	<buildSpec>
+		<buildCommand>
+			<name>org.python.pydev.PyDevBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>org.nodeclipse.ui.NodeNature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 		<nature>tern.eclipse.ide.core.ternnature</nature>
+		<nature>org.python.pydev.pythonNature</nature>
 	</natures>
 </projectDescription>
