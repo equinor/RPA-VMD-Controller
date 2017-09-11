@@ -2,9 +2,9 @@ var ps = require('ps-node');
 var python_shell = require('python-shell');
 
 var PYTHON_WORKER_PROCNAME = 'worker.py'
-var PYTHON_WORKER_PATH = '../controllers/python/worker.py'
+var PYTHON_WORKER_PATH = './controllers/python/worker.py'
 var PYTHON_DECIDER_PROCNAME = 'decider.py'
-var PYTHON_DECIDER_PATH = '../controllers/python/decider.py'
+var PYTHON_DECIDER_PATH = './controllers/python/decider.py'
 
 console.log(process.cwd());	
 

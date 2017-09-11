@@ -3,3 +3,4 @@ process.env
 /node_modules
 .DS_Store*
 /public/data/*
+*.pyc

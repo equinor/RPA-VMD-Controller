@@ -3,10 +3,10 @@ import pandas as pd
 from __builtin__ import int
 
 
-bbreg_main_file = "../../public/data/BRREGmain.csv.gz"
-bbreg_sub_file = "../../public/data/BRREGsub.csv.gz"
-vendor_sap_file = "../../public/data/VendorSAP.csv"
-output_file = "../../public/data/output.xlsx"
+bbreg_main_file = "./public/data/BRREGmain.csv.gz"
+bbreg_sub_file = "./public/data/BRREGsub.csv.gz"
+vendor_sap_file = "./public/data/VendorSAP.csv"
+output_file = "./public/data/output.xlsx"
 
 
 dtypeSAP = {

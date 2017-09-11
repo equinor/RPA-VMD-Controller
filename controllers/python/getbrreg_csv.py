@@ -6,8 +6,8 @@ from pathlib import Path
 URLmainunits = 'http://data.brreg.no/enhetsregisteret/download/enheter'
 URLsubunits = 'http://data.brreg.no/enhetsregisteret/download/underenheter'
 
-FILEmainunits = "../../public/data/BRREGmain.csv.gz"
-FILEsubunits = "../../public/data/BRREGsub.csv.gz"
+FILEmainunits = "./public/data/BRREGmain.csv.gz"
+FILEsubunits = "./public/data/BRREGsub.csv.gz"
 
 time_now = time.time()
 expire = 604800
