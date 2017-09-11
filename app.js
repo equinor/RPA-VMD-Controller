@@ -5,14 +5,19 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+// Controllers
 var aws_swf = require('./controllers/aws-swf-controller');
+var workflow = require('./controllers/workflow')
 // Modules
 var index = require('./routes/index');
 var listwf = require('./routes/listwf');
 var upload = require('./routes/upload');
+var download = require('./routes/download')
+var system = require('./routes/system')
 
-// Connect to AWS SWF
+// Connect to AWS SWF and start decider/worker
 aws_swf.connect();
+workflow.start();
 
 
 var app = express();
@@ -30,28 +35,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/listwf', listwf)
 app.use('/upload', upload)
-
-app.get('/download', function (req, res){
-	
-	console.log("test: " + req.query.runId);
-	
-	wf_params.execution.runId = req.query.runId
-	wf_params.execution.workflowId = req.query.workflowId;
-	
-	getWorkflowStatus(function(result) {
-		if (!result) {
-			res.send("not found")
-		} else if (result.executionInfo.executionStatus == "CLOSED") {
-			res.sendFile(__dirname + '/public/uploads/' + 'csvfile.csv' )
-		} else {
-			console.log("WF status: " + result.executionInfo.executionStatus)
-			res.send("not finished");
-		}
-		
-	})
-
-});
-
+app.use('/download', download)
+app.use('/system', system)
 
 
 

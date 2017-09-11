@@ -1,3 +1,5 @@
 process.env
-/public/uploads
+/public/uploads/*
 /node_modules
+.DS_Store*
+/public/data/*

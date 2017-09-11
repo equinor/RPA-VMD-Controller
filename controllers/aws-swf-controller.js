@@ -12,8 +12,6 @@ var state = {
 exports.connect = function(callback) {
 	if (state.awf_swf) return done()
 	
-	console.log(aws_swf_models)
-	
 	aws_swf = new aws.SWF;
 
 	if (process.env.ENV == 'PRODUCTION') {
@@ -34,12 +32,13 @@ exports.get = function() {
 
 exports.getWorkflowList = function getWorkflowList(callback) {
 	// Get one day
-	var lateDate = Date.now();
-	var delta = Date.now() + 24*3600*1000 // subtract one day
+	var lateDate = new Date();
+	var delta = Date.now() - 24*3600*1000 // subtract one day
 	var oldDate = new Date(delta) // Make date object for one day back
 	
 	aws_swf_models.wf_list_params.startTimeFilter.oldestDate = oldDate;
 	aws_swf_models.wf_list_params.startTimeFilter.latestDate = lateDate;
+	
 	
 	aws_swf.listOpenWorkflowExecutions(aws_swf_models.wf_list_params, function(err, data) {
 		if (err) {

@@ -29,7 +29,7 @@ module.exports = {
 			'webinated'
 		],
 		taskList: {
-			name: 'TASK_LIST_NAME'
+			name: TASK_LIST_NAME
 		},
 		taskStartToCloseTimeout: '1800'
 	},
