@@ -4,7 +4,7 @@ var python_shell = require('python-shell');
 var PYTHON_WORKER_PROCNAME = 'worker.py'
 var PYTHON_WORKER_PATH = './python/worker.py'
 var PYTHON_DECIDER_PROCNAME = 'decider.py'
-var PYTHON_DECIDER_PATH = './python/RPA-VMD-Engine/decider.py'
+var PYTHON_DECIDER_PATH = './python/decider.py'
 
 var decider = null
 var worker = null
