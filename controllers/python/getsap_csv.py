@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-FILEvendorsap = "./public/data/VendorSAP.csv"
+FILEvendorsap = "./public/uploads/vendorsap.csv"
 
 def checkSAPcsv():
     sap_file = Path(FILEvendorsap)

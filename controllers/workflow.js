@@ -25,10 +25,8 @@ exports.getStatus = function(){
 exports.start = function start() {
 	checkSystem(PYTHON_WORKER_PROCNAME, function(res) {
 		if (res) {
-			console.log(res);
 			worker = res
 			state.worker = worker;
-			console.log(worker);
 		} else {
 			console.log("Start python worker")
 			startPython(PYTHON_WORKER_PATH)
@@ -38,7 +36,7 @@ exports.start = function start() {
 	checkSystem(PYTHON_DECIDER_PROCNAME, function(res) {
 		if (res) {
 			decider = res
-			state.decider = worker;
+			state.decider = decider;
 		} else {
 			console.log("Starting decider")
 			startPython(PYTHON_DECIDER_PATH)

@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 		if (!result) {
 			res.send("not found")
 		} else if (result.executionInfo.executionStatus == "CLOSED") {
-			res.sendFile(__dirname + '/public/uploads/' + 'csvfile.csv' )
+			res.sendFile(__dirname + '/public/uploads/' + 'output.xlsx' )
 		} else {
 			console.log("WF status: " + result.executionInfo.executionStatus)
 			res.send("not finished");

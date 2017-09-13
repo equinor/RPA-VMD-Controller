@@ -23,5 +23,15 @@ router.post('/', upload.single('csvupload'), function(req, res) {
 	});
 });
 
+router.post('/api', function(req, res) {
+	
+	console.log('event in api upload')
+	console.log(req.fields); // contains non-file fields
+	console.log(req.files); // contains files
+	  
+	res.send('blah')	
+}); 
+
+
 
 module.exports = router;
