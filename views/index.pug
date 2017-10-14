@@ -51,8 +51,24 @@ block body
 							+alert-success("This is a success alert")
 							+label-primary("Decider")
 							+label-primary("Worker")
-						
-						
-		
+			else if selected == 'Upload'
+				p.lead
+					| Upload info
+				p
+					.row
+						.col-md-12.col-md.offset-0
+							table.table-striped
+								thead
+									tr
+										th Entity
+										th Id
+								tbody
+									tr
+										td RunId
+										td= runId
+									tr
+										td Workflow ID
+										td= wfId
+					
 		footer.footer
 			p © Statoil ASA

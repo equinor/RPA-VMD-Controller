@@ -19,7 +19,8 @@ router.post('/', upload.single('csvupload'), function(req, res) {
 	// Start AWS workflow
 	console.log("Starting workflow");
 	aws_swf.startWorkflow(function(result) {
-		res.send(result);
+		console.log(result)
+		res.render('index', {id: 'upload', selected: 'Upload', runId: result.runId, wfId: result.workflowId});
 	});
 });
 
