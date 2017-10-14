@@ -2,7 +2,6 @@
 import pandas as pd
 from __builtin__ import int
 
-
 bbreg_main_file = "./public/data/BRREGmain.csv.gz"
 bbreg_sub_file = "./public/data/BRREGsub.csv.gz"
 vendor_sap_file = "./public/uploads/vendorsap.csv"
@@ -71,6 +70,7 @@ def compareCSV():
     
     excel_writer.save()
     
-    
-    
     return
+
+if __name__ == "__main__":
+    compareCSV()

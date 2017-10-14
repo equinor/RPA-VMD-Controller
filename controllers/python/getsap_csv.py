@@ -13,3 +13,6 @@ def checkSAPcsv():
     else:
         print "Found SAP file"
         return -1
+    
+if __name__ == "__main__":
+    checkSAPcsv()

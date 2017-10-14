@@ -33,7 +33,7 @@ def get_brreg():
         
         if (dur > expire):
             print "Main file too old, getting a new one"
-            os.remove(main_file)
+            os.remove(FILEmainunits)
             
             response = urllib2.urlopen(URLmainunits)
             data = response.read()
@@ -60,7 +60,7 @@ def get_brreg():
         
         if (dur > expire):
             print "Sub file too old, getting a new one"
-            os.remove(sub_file)
+            os.remove(FILEsubunits)
             
             response = urllib2.urlopen(URLsubunits)
             data = response.read()
@@ -70,3 +70,6 @@ def get_brreg():
             file_.write(data)
             file_.close()
     return;
+
+if __name__ == "__main__":
+    get_brreg()
