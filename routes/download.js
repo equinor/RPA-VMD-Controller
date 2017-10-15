@@ -3,8 +3,9 @@ var router = express.Router();
 var aws_swf = require('../controllers/aws-swf-controller')
 
 
-router.get('/:runId/:workflowId', function(req, res) {
-	console.log("test: " + req.params.runId);
+router.get('/', function(req, res) {
+	console.log("test: " + req.query.json);
+	var request_params = JSON.parse(req.query.json)
 	
 	// Fail check if file exist
 
@@ -13,22 +14,27 @@ router.get('/:runId/:workflowId', function(req, res) {
 	
 });
 
-
-router.get('/status/:runId/:workflowId', function(req, res) {
+router.get('/status/', function(req, res) {
 	
 	console.log("content of request: ")
-	console.log(req.params.runId)
-	console.log(req.params.workflowId)
+	console.log(req.query.json)
+	
+	var request_params = JSON.parse(req.query.json)
+	var runId = request_params[0].runId
+	var workflowId = request_params[0].workflowId
+	
+	console.log(output[0].runId)
+	
 	
 	var response = {
-		runId: req.params.runId,
-		workflowId: req.params.workflowId,
+		runId: runId,
+		workflowId: workflowId,
 		statuscode: -1,
 		statustext: ''
 	}
 	
 	
-	aws_swf.getWorkflowStatus(req.params.runId, req.params.workflowId, function(result) {
+	aws_swf.getWorkflowStatus(runId, workflowId, function(result) {
 		if (!result) {
 			response.statuscode = -1
 			response.statustext = 'Not found'
