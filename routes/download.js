@@ -5,20 +5,44 @@ var aws_swf = require('../controllers/aws-swf-controller')
 
 router.get('/', function(req, res, next) {
 	console.log("test: " + req.query.runId);
+	
+	// Fail check if file exist
 
+	res.sendFile(process.env.UPLOAD_PATH + process.env.DOWNLOAD_FILE_NAME)
+	
+	
+});
+
+
+router.get('/status', function(req, res, next) {
+	
+	var response = {
+		runId: req.query.runId,
+		workflowId: req.query.workflowId,
+		statuscode: -1,
+		statustext: ''
+	}
+	
 	
 	aws_swf.getWorkflowStatus(req.query.runId, req.query.workflowId, function(result) {
 		if (!result) {
-			res.send("not found")
+			response.statuscode = -1
+			response.statustext = 'Not found'
+			res.send(response)
 		} else if (result.executionInfo.executionStatus == "CLOSED") {
-			res.sendFile(__dirname + '/public/uploads/' + 'output.xlsx' )
+			// This needs to be further refined to take failed execution of WF
+			response.statuscode = 1
+			response.statustext = 'Done'
+			res.send(response)
 		} else {
-			console.log("WF status: " + result.executionInfo.executionStatus)
-			res.send("not finished");
+			response.statuscode = 0
+			response.statustext = 'Not finished'
+			res.send(response);
 		}
 		
-	})
-	
-});
+	})	
+
+}); 
+
 
 module.exports = router;

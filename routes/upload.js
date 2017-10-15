@@ -24,6 +24,7 @@ router.post('/', upload.single('csvupload'), function(req, res) {
 	});
 });
 
+/**
 router.post('/api', function(req, res) {
 	
 	console.log('event in api upload')
@@ -32,7 +33,7 @@ router.post('/api', function(req, res) {
 	  
 	res.send('blah')	
 }); 
-
+*/
 
 
 module.exports = router;
