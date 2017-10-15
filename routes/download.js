@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var URI = require('urijs');
 var aws_swf = require('../controllers/aws-swf-controller')
 
 
@@ -17,13 +18,14 @@ router.get('/', function(req, res) {
 router.get('/status/', function(req, res) {
 	
 	console.log("content of request: ")
-	console.log(req.query.json)
+	console.log(URI(req.query.json).normalizeQuery())
+	
 	
 	var request_params = JSON.parse(req.query.json)
 	var runId = request_params[0].runId
 	var workflowId = request_params[0].workflowId
 	
-	console.log(output[0].runId)
+	//console.log(output[0].runId)
 	
 	
 	var response = {
