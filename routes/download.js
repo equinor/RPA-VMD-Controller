@@ -3,10 +3,10 @@ var router = express.Router();
 var aws_swf = require('../controllers/aws-swf-controller')
 
 
-router.post('/', function(req, res) {
-	var request_params = req.body[0]
-	var runId = request_params.runId
-	var workflowId = request_params.workflowId
+router.get('/', function(req, res) {
+	//var request_params = req.body[0]
+	//var runId = request_params.runId
+	//var workflowId = request_params.workflowId
 	
 	// Fail check if file exist
 
