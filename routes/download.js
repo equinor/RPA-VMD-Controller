@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var URI = require('urijs');
 var aws_swf = require('../controllers/aws-swf-controller')
 
 
-router.get('/', function(req, res) {
-	console.log("test: " + req.query.json);
-	var request_params = JSON.parse(req.query.json)
+router.post('/', function(req, res) {
+	var request_params = req.body[0]
+	var runId = request_params.runId
+	var workflowId = request_params.workflowId
 	
 	// Fail check if file exist
 
@@ -15,17 +15,14 @@ router.get('/', function(req, res) {
 	
 });
 
-router.get('/status/', function(req, res) {
+router.post('/status/', function(req, res) {
+		
+	var request_params = req.body[0]
+	var runId = request_params.runId
+	var workflowId = request_params.workflowId
 	
-	console.log("content of request: ")
-	console.log(URI(req.query.json).normalizeQuery())
+	console.log("runId: " + runId + " workflowId: " + workflowId)
 	
-	
-	var request_params = JSON.parse(req.query.json)
-	var runId = request_params[0].runId
-	var workflowId = request_params[0].workflowId
-	
-	//console.log(output[0].runId)
 	
 	
 	var response = {
