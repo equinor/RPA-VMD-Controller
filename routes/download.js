@@ -28,16 +28,16 @@ router.get('/status', function(req, res, next) {
 		if (!result) {
 			response.statuscode = -1
 			response.statustext = 'Not found'
-			res.send(response)
+			res.json(response)
 		} else if (result.executionInfo.executionStatus == "CLOSED") {
 			// This needs to be further refined to take failed execution of WF
 			response.statuscode = 1
 			response.statustext = 'Done'
-			res.send(response)
+			res.json(response)
 		} else {
 			response.statuscode = 0
 			response.statustext = 'Not finished'
-			res.send(response);
+			res.json(response);
 		}
 		
 	})	
