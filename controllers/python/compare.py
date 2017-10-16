@@ -1,11 +1,12 @@
 #from pandas import DataFrame, read_csv
 import pandas as pd
 from __builtin__ import int
+import config
 
-bbreg_main_file = "./public/data/BRREGmain.csv.gz"
-bbreg_sub_file = "./public/data/BRREGsub.csv.gz"
-vendor_sap_file = "./public/uploads/vendorsap.csv"
-output_file = "./public/uploads/output.xlsx"
+bbreg_main_file = config.VMD_CONFIG['bbreg_main_file']
+bbreg_sub_file = config.VMD_CONFIG['bbreg_sub_file']
+vendor_sap_file = config.VMD_CONFIG['vendor_sap_file']
+output_file = config.VMD_CONFIG['output_file']
 
 
 dtypeSAP = {

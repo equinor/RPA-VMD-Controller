@@ -2,15 +2,15 @@
 
 import urllib2, os, time
 from pathlib import Path
+import config
 
-URLmainunits = 'http://data.brreg.no/enhetsregisteret/download/enheter'
-URLsubunits = 'http://data.brreg.no/enhetsregisteret/download/underenheter'
-
-FILEmainunits = "./public/data/BRREGmain.csv.gz"
-FILEsubunits = "./public/data/BRREGsub.csv.gz"
+FILEmainunits = config.VMD_CONFIG['bbreg_main_file']
+FILEsubunits = config.VMD_CONFIG['bbreg_sub_file']
+URLmainunits = config.VMD_CONFIG['URLmainunits']
+URLsubunits = config.VMD_CONFIG['URLsubunits']
 
 time_now = time.time()
-expire = 604800
+expire = config.VMD_CONFIG['bbreg_file_expire']
 
 main_file = Path(FILEmainunits)
 sub_file = Path(FILEsubunits)

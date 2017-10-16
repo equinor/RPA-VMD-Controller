@@ -4,3 +4,4 @@ process.env
 .DS_Store*
 /public/data/*
 *.pyc
+/controller/python/config.py

@@ -1,11 +1,12 @@
 #!/usr/bin/python
 
 from pathlib import Path
+import config
 
-FILEvendorsap = "./public/uploads/vendorsap.csv"
+vendor_sap_file = config.VMD_CONFIG['vendor_sap_file']
 
 def checkSAPcsv():
-    sap_file = Path(FILEvendorsap)
+    sap_file = Path(vendor_sap_file)
     
     if not sap_file.is_file():
         print "No SAP file - error"
