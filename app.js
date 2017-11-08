@@ -5,7 +5,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-//const formidable = require('formidable');
 var fs = require('fs');
 
 // Controllers
@@ -23,7 +22,7 @@ var system = require('./routes/system')
 aws_swf.connect();
 workflow.start();
 
-splunkLogger.log("Starting webserver", "Info", "VMD: App.js")
+splunkLogger.log("Starting webserver", "Info", "VMD JS App")
 
 var app = express();
 // view engine setup
@@ -48,7 +47,7 @@ app.use('/system', system)
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
-  splunkLogger.log("In app.js: " + err.status + "  " + err.message, "Warning")
+  splunkLogger.log("HTTP Error request from user: " + err.status + "  " + err.message, "Warning", "VMD JS App")
   next(err);
 });
 

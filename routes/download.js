@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var aws_swf = require('../controllers/aws-swf-controller')
+var splunkLogger = require('../controllers/splunk-logger')
 
 
 router.get('/', function(req, res) {
@@ -22,6 +23,7 @@ router.post('/status/', function(req, res) {
 	var workflowId = request_params.workflowId
 	
 	console.log("runId: " + runId + " workflowId: " + workflowId)
+	splunkLogger.log("Status request from client", "Info", "VMD JS Download")
 	
 	
 	
