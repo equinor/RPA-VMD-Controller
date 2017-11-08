@@ -5,6 +5,7 @@ from botocore.client import Config
 import compare
 import getsap_csv
 import getbrreg_csv
+import uHEC
 
 botoConfig = Config(connect_timeout=50, read_timeout=70)
 swf = boto3.client('swf', config=botoConfig)
@@ -48,16 +49,19 @@ while True:
         
         if (task_name == TASK1):
             print TASK1
+            uHEC.splunk_log('Workflow: Starting check SAP file', 'Info', 'VMD Worker')
             getsap_csv.checkSAPcsv()
             respond_act('success')
                    
         elif (task_name == TASK2):
             print TASK2
+            uHEC.splunk_log('Workflow: Starting get BRREG file', 'Info', 'VMD Worker')
             getbrreg_csv.get_brreg()
             respond_act('success')
             
         elif (task_name == TASK3):
             print TASK3
+            uHEC.splunk_log('Workflow: Starting compare files', 'Info', 'VMD Worker')
             compare.compareCSV()
             respond_act('success')
         

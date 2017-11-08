@@ -21,6 +21,7 @@
     "pug": "~2.0.0-beta11",
     "python-shell": "^0.4.0",
     "serve-favicon": "~2.4.2",
+    "splunk-logging": "^0.9.3",
     "uuid": "^3.1.0"
   }
 }

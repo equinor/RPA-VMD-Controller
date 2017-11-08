@@ -2,6 +2,8 @@
 import pandas as pd
 from __builtin__ import int
 import config
+import uHEC
+from datetime import datetime
 
 bbreg_main_file = config.VMD_CONFIG['bbreg_main_file']
 bbreg_sub_file = config.VMD_CONFIG['bbreg_sub_file']
@@ -34,6 +36,8 @@ dtypeBBREGsub = {
     }
 
 def compareCSV():
+    start_time = datetime.now()
+    uHEC.splunk_log('Starting compare', 'Info', 'VMD Compare')
     # Import CSV for BRREG
     df_main = pd.read_csv(bbreg_main_file, encoding='iso-8859-1', sep=';', skipinitialspace=True, usecols=main_fields, dtype=dtypeBBREGmain)
     df_sub = pd.read_csv(bbreg_sub_file, encoding='iso-8859-1', sep=';', skipinitialspace=True, usecols=sub_fields, dtype=dtypeBBREGsub)    
@@ -70,6 +74,12 @@ def compareCSV():
     df_bankrupt_sub_sap.to_excel(excel_writer, sheet_name='Sub units', encoding='iso-8859-1')
     
     excel_writer.save()
+    
+    stop_time = datetime.now()
+    diff_time = stop_time - start_time
+    diff_time_sec = int(round(diff_time.total_seconds()))
+    
+    uHEC.splunk_log('Finished compare in ' + diff_time_sec + " seconds", 'Info', 'VMD Compare')
     
     return
 

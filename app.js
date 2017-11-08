@@ -11,6 +11,7 @@ var fs = require('fs');
 // Controllers
 var aws_swf = require('./controllers/aws-swf-controller');
 var workflow = require('./controllers/workflow')
+var splunkLogger = require('./controllers/splunk-logger')
 // Modules
 var index = require('./routes/index');
 var listwf = require('./routes/listwf');
@@ -22,33 +23,13 @@ var system = require('./routes/system')
 aws_swf.connect();
 workflow.start();
 
+splunkLogger.log("Starting webserver", "Info", "VMD: App.js")
 
 var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-/**
-// Formidabele handles uploads via API
-app.use(function (req, res, next) {
-    var form = new formidable.IncomingForm({
-        encoding: 'utf-8',
-        uploadDir: process.env.UPLOAD_PATH,
-        keepExtensions: true
-    })
-    form.once('error', console.log)
-    form.parse(req, function (err, fields, files) {
-        Object.assign(req, {fields, files});
-        next();
-    })
-    form.on('file', function(field, file) {
-        //rename the incoming file to the file's name
-        fs.rename(file.path, form.uploadDir + "/" + file.name, function(err) {
-        		if (err) throw err;
-        });
-    });
-})
-*/
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -67,6 +48,7 @@ app.use('/system', system)
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
+  splunkLogger.log("In app.js: " + err.status + "  " + err.message, "Warning")
   next(err);
 });
 
@@ -75,7 +57,7 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+  
   // render the error page
   res.status(err.status || 500);
   res.render('error');
