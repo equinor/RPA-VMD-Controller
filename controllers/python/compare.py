@@ -79,7 +79,9 @@ def compareCSV():
     diff_time = stop_time - start_time
     diff_time_sec = int(round(diff_time.total_seconds()))
     
-    uHEC.splunk_log('Finished compare in ' + diff_time_sec + " seconds", 'Info', 'VMD Compare')
+    print diff_time_sec
+    print "hello"
+    uHEC.splunk_log('Finished compare in ' + str(diff_time_sec) + " seconds", 'Info', 'VMD Compare')
     
     return
 

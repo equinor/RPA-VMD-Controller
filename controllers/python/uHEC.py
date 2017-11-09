@@ -140,7 +140,7 @@ def splunk_log(msg, sev, src):
     
     testeventJSON.sendEvent(payload)
 
-    sys.exit(0)
+    #sys.exit(0)
 
 if __name__ ==  "__main__":
 
