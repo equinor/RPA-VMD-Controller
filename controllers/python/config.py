@@ -7,6 +7,8 @@ VMD_CONFIG = {
     'URLsubunits': 'http://data.brreg.no/enhetsregisteret/download/underenheter',
     'bbreg_file_expire': 604800,
     'environment': 'DEVELOPMENT',
-    'splunk-server': '192.168.1.12',
-    'splunk-token': '1df8ec73-923e-4ec4-9268-3b1e47172870'
+    'splunk-server-dev': '192.168.1.12',
+    'splunk-token-dev': '1df8ec73-923e-4ec4-9268-3b1e47172870'
+    'splunk-server-prod': '',
+    'splunk-token-prod': ''
 }
