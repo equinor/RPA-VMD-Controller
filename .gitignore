@@ -5,3 +5,4 @@ process.env
 /public/data/*
 *.pyc
 /controller/python/config.py
+.idea

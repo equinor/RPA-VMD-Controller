@@ -22,15 +22,14 @@ block body
 			h2 SAP VMD
 			if selected === 'Start workflow'
 				p.lead
-					| Upload XLSX with OrgId, OrgName from SAP VMD. This will trigged a workflow that checks the OrgId aginst BBREG to find bankrupt companies. The result of the compare can be fetched via API call
+					| Upload CSV with OrgId, OrgName from SAP VMD. This will trigged a workflow that checks the OrgId aginst BBREG to find bankrupt companies. The result of the compare can be fetched via API call
 				p
 				.row
 					.col-md-6.col-md-offset-3
-					
 					// register form
 					form(method='POST' enctype='multipart/form-data' action='/upload')
 						div.form-group
-							label(for='name') :
+							label(for='name')
 							input#name.form-control(type='file', placeholder='File' name='csvupload')
 						button.btn.btn-primary(type='submit', name='uploadcsv', value='Upload CSV') Upload
 			
@@ -48,9 +47,16 @@ block body
 				p
 					.row
 						.col-md-12.col-md-offset-0
-							+alert-success("This is a success alert")
-							+label-primary("Decider")
-							+label-primary("Worker")
+							if (sysStat.decider.pid == -1)
+								+alert-i-danger(sysStat.decider.text + " PID:" + sysStat.decider.pid)
+							else
+								+alert-i-success(sysStat.decider.text + " PID: " + sysStat.decider.pid)
+
+							if (sysStat.worker.pid == -1)
+								+alert-i-danger(sysStat.worker.text + " PID: " + sysStat.worker.pid)
+							else
+								+alert-i-success(sysStat.worker.text + " PID: " + sysStat.worker.pid)
+
 			else if selected == 'Upload'
 				p.lead
 					| Upload info
