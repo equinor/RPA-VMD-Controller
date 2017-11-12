@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 VMD_CONFIG = {
     'bbreg_main_file': '/Users/frode/git/RPA-VMD-Controller/public/data/BRREGmain.csv.gz',
     'bbreg_sub_file': '/Users/frode/git/RPA-VMD-Controller/public/data/BRREGsub.csv.gz',
@@ -10,3 +12,5 @@ VMD_CONFIG = {
     'splunk-server': '192.168.1.12',
     'splunk-token': '1df8ec73-923e-4ec4-9268-3b1e47172870'
 }
+
+

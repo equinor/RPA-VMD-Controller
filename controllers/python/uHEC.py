@@ -13,16 +13,10 @@ try:
     import requests
 except ImportError:
     try:
-        import urequests as requests
+        import requests as requests
     except ImportError as err_msg:
         print(err_msg)
         sys.exit(1)
-
-# setting ntptime is optional for this class
-try:
-    import ntptime
-except ImportError as err_msg:
-    print(err_msg)
 
 
 __author__ = "george@georgestarcher.com (George Starcher)"
@@ -108,14 +102,7 @@ class http_event_collector:
 
         return()
 
-    def set_ntp_time(self):
 
-        try:
-            ntptime.settime()
-            return(time.time())
-        except Exception as err_msg:
-            print(err_msg)
-            return()
 
 def splunk_log(msg, sev, src):
   
