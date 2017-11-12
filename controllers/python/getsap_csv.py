@@ -11,11 +11,11 @@ def checkSAPcsv():
     
     if not sap_file.is_file():
         print "No SAP file - error"
-        uHEC.splunk_log('No SAP file found', 'Error', 'VMD GetSAP')
+        #uHEC.splunk_log('No SAP file found', 'Error', 'VMD GetSAP')
         return 0
     else:
         print "Found SAP file"
-        uHEC.splunk_log('SAP file found', 'Info', 'VMD GetSAP')
+        #uHEC.splunk_log('SAP file found', 'Info', 'VMD GetSAP')
         return -1
     
 if __name__ == "__main__":

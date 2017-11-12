@@ -20,7 +20,7 @@ def get_brreg():
     if not main_file.is_file():
         # Get main file
         print "Main file is missing, getting it.."
-        uHEC.splunk_log('Main BRREG file missing - getting it', 'Info', 'VMD Get BRREG')
+        #uHEC.splunk_log('Main BRREG file missing - getting it', 'Info', 'VMD Get BRREG')
         response = urllib2.urlopen(URLmainunits)
         data = response.read()
         
@@ -35,7 +35,7 @@ def get_brreg():
         
         if (dur > expire):
             print "Main file too old, getting a new one"
-            uHEC.splunk_log('Main BRREG file too old - getting it', 'Info', 'VMD Get BRREG')
+            #uHEC.splunk_log('Main BRREG file too old - getting it', 'Info', 'VMD Get BRREG')
             os.remove(FILEmainunits)
             
             response = urllib2.urlopen(URLmainunits)
@@ -49,7 +49,7 @@ def get_brreg():
     if not sub_file.is_file():
         # Get sub file
         print "Sub file is missing, getting it.."
-        uHEC.splunk_log('Sub BRREG file missing - getting it', 'Info', 'VMD Get BRREG')
+        #uHEC.splunk_log('Sub BRREG file missing - getting it', 'Info', 'VMD Get BRREG')
         response = urllib2.urlopen(URLsubunits)
         data = response.read()
         
@@ -64,7 +64,7 @@ def get_brreg():
         
         if (dur > expire):
             print "Sub file too old, getting a new one"
-            uHEC.splunk_log('Sub BRREG file too old - getting it', 'Info', 'VMD Get BRREG')
+            #uHEC.splunk_log('Sub BRREG file too old - getting it', 'Info', 'VMD Get BRREG')
             os.remove(FILEsubunits)
             
             response = urllib2.urlopen(URLsubunits)

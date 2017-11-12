@@ -37,7 +37,7 @@ dtypeBBREGsub = {
 
 def compareCSV():
     start_time = datetime.now()
-    uHEC.splunk_log('Starting compare', 'Info', 'VMD Compare')
+    #uHEC.splunk_log('Starting compare', 'Info', 'VMD Compare')
     # Import CSV for BRREG
     df_main = pd.read_csv(bbreg_main_file, encoding='iso-8859-1', sep=';', skipinitialspace=True, usecols=main_fields, dtype=dtypeBBREGmain)
     df_sub = pd.read_csv(bbreg_sub_file, encoding='iso-8859-1', sep=';', skipinitialspace=True, usecols=sub_fields, dtype=dtypeBBREGsub)    
@@ -80,8 +80,7 @@ def compareCSV():
     diff_time_sec = int(round(diff_time.total_seconds()))
     
     print diff_time_sec
-    print "hello"
-    uHEC.splunk_log('Finished compare in ' + str(diff_time_sec) + " seconds", 'Info', 'VMD Compare')
+    #uHEC.splunk_log('Finished compare in ' + str(diff_time_sec) + " seconds", 'Info', 'VMD Compare')
     
     return
 
