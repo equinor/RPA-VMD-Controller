@@ -1,24 +1,15 @@
 #!/usr/bin/python
 
 VMD_CONFIG = {
-    'bbreg_main_file': '/Users/frode/git/RPA-VMD-Controller/public/data/BRREGmain.csv.gz',
-    'bbreg_sub_file': '/Users/frode/git/RPA-VMD-Controller/public/data/BRREGsub.csv.gz',
-    'vendor_sap_file': '/Users/frode/git/RPA-VMD-Controller/public/uploads/vendorsap.csv',
-    'output_file': '/Users/frode/git/RPA-VMD-Controller/public/uploads/output.xlsx',
+    'bbreg_main_file': '/private/frskja/RPA/RPA-VMD-Controller/public/data/BRREGmain.csv.gz',
+    'bbreg_sub_file': '/private/frskja/RPA/RPA-VMD-Controller/public/data/BRREGsub.csv.gz',
+    'vendor_sap_file': '/private/frskja/RPA/RPA-VMD-Controller/public/uploads/vendorsap.csv',
+    'output_file': '/private/frskja/RPA/RPA-VMD-Controller/public/uploads/output.xlsx',
     'URLmainunits': 'http://data.brreg.no/enhetsregisteret/download/enheter',
     'URLsubunits': 'http://data.brreg.no/enhetsregisteret/download/underenheter',
     'bbreg_file_expire': 604800,
-    'environment': 'DEVELOPMENT',
-<<<<<<< HEAD
-    'splunk-server': '192.168.1.12',
-    'splunk-token': '1df8ec73-923e-4ec4-9268-3b1e47172870'
+    'environment': 'PROD',
+    'splunk-server': 'ws1583.statoil.net',
+    'splunk-token': 'BA3920F7-0B33-4109-AFE7-7AED18EEB05F'
 }
 
-
-=======
-    'splunk-server-dev': '192.168.1.12',
-    'splunk-token-dev': '1df8ec73-923e-4ec4-9268-3b1e47172870'
-    'splunk-server-prod': '',
-    'splunk-token-prod': ''
-}
->>>>>>> f925a30c2c73563373d9539bf020516ef38f7159
