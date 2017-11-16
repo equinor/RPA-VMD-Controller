@@ -45,7 +45,7 @@ def compareCSV():
     df_sub.rename(columns={'organisasjonsnummer' : 'suborganisasjonsnummer'}, inplace=True)
     
     # Read file, rename columns, remove NO prefix, remove NaN rows, typecast orgnr to int
-    df_sap = pd.read_csv(vendor_sap_file, encoding='iso-8859-1', sep=',', error_bad_lines=False, dtype=dtypeSAP)
+    df_sap = pd.read_excel(vendor_sap_file, dtype=dtypeSAP)
     df_sap.rename(columns={'VAT Registration No.':'organisasjonsnummer','Name 1':'SAP navn', 'SAP Vendor' : 'SAP Vendor code'}, inplace=True)
     df_sap['organisasjonsnummer'] = df_sap['organisasjonsnummer'].str.replace('\A[^\W\d_]+','')
     df_sap = df_sap.dropna(axis=0, how='any')
