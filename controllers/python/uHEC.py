@@ -111,7 +111,7 @@ def splunk_log(msg, sev, src):
 
     # Start event payload and add the metadata information
     payload = {
-        'index': 'main',
+        'index': 'blue_prism',
         'sourcetype': 'httpevent',
         'source': 'BluePrism-VMD-Python',
         'host': 'ai-linapp1014',
