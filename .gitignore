@@ -6,3 +6,5 @@ process.env
 *.pyc
 controllers/python/config.py
 .idea/
+.pydevproject
+.project
