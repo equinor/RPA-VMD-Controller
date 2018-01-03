@@ -50,7 +50,12 @@ def compareCSV():
     df_sap['organisasjonsnummer'] = df_sap['organisasjonsnummer'].str.replace('\A[^\W\d_]+','')
     df_sap = df_sap.dropna(axis=0, how='any')
     df_sap['organisasjonsnummer']  = pd.to_numeric(df_sap['organisasjonsnummer'], errors='coerce')
-    
+
+    # List all companies that are registered in SAP, but no longer exist in BRREG
+    df_expired_org = df_sap.merge(df_main, on=['organisasjonsnummer', 'organisasjonsnummer'], how='left', indicator=True)
+    df_expired_org = df_expired_org[(df_expired_org['_merge'] == 'left_only' )]
+    df_expired_org.info()
+
     # Make bankrupt datasets
     df_main = df_main[(df_main['konkurs'] == 'J')]
     
@@ -72,7 +77,8 @@ def compareCSV():
     
     df_bankrupt_main_sap.to_excel(excel_writer, sheet_name='Main units', encoding='iso-8859-1')
     df_bankrupt_sub_sap.to_excel(excel_writer, sheet_name='Sub units', encoding='iso-8859-1')
-    
+    df_expired_org.to_excel(excel_writer, sheet_name='Not in BRREG', encoding='iso-8859-1')
+
     excel_writer.save()
     
     stop_time = datetime.now()

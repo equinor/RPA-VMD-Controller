@@ -1,3 +1,5 @@
+.settings/
+.vscode/
 process.env
 /public/uploads/*
 /node_modules
@@ -8,3 +10,4 @@ controllers/python/config.py
 .idea/
 .pydevproject
 .project
+.vscode
