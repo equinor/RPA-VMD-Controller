@@ -8,11 +8,11 @@ router.get('/', function(req, res) {
 	//var request_params = req.body[0]
 	//var runId = request_params.runId
 	//var workflowId = request_params.workflowId
-	
-	// Fail check if file exist
+	var sendFile = process.env.UPLOAD_PATH + '/' + process.env.DOWNLOAD_FILE_NAME
 
-	res.sendFile(process.env.UPLOAD_PATH + process.env.DOWNLOAD_FILE_NAME)
-	
+	// Fail check if file exist
+	console.log("Sending file: " + sendFile)
+	res.sendFile(sendFile)
 	
 });
 
